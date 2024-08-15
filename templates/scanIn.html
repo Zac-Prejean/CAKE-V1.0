@@ -1,0 +1,194 @@
+<!DOCTYPE html>  
+<html lang="en">  
+  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>ScanIn</title>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+    <link rel="shortcut icon" type="x-icon" href="{{ url_for('static', filename='images/Completeful Logo Black.svg') }}">  
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>     
+</head>
+  
+<body>  
+
+    <header class="text-center">  
+  
+        <!-- NAV -->  
+        <nav>
+            <div class="wrapper">
+                <div class="cakeLogo">  
+                    <a href="#"><img src="{{ url_for('static', filename='images/CakeSiteLogo.svg') }}" alt="Cake Logo"></a>  
+                </div> 
+                <input type="radio" name="slider" id="menu-btn">
+                <input type="radio" name="slider" id="close-btn">
+                <ul class="nav-links">
+                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                <li>
+                    <button id="productionBtn" class="desktop-item production-btn">Production</button>   
+                    <button id="productionBtnMobile" class="mobile-item production-btn">Production</button>
+                    <div class="mega-box">
+                    <div class="content">
+                        <div class="navrow jimjim">
+                        <img src="{{ url_for('static', filename='images/home/Imwatchingyou_edit.png') }}" class="jimjim" alt="Jimmy is Watching">
+                        </div>
+                        <div class="navrow">
+                        <header class="dropdown-header">PrintLayotLab</header>  
+                        <ul class="mega-links dropdown-links">
+                            <li><a class="m-0" href="{{ url_for('precheck') }}">  
+                            <img src="{{ url_for('static', filename='images/precheck.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Precheck Logo">  
+                        Precheck</a></li>
+                            <li><a class="m-0" href="{{ url_for('designer') }}">
+                            <img src="{{ url_for('static', filename='images/designer.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Template Logo">
+                        Designer</a></li>
+                            <li><a class="m-0" href="{{ url_for('templatemerger') }}">  
+                            <img src="{{ url_for('static', filename='images/template.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Designer Logo">  
+                        TemplateMerger</a></li>
+                        </ul>
+                        </div>
+                        <div class="navrow">  
+                        <header class="dropdown-header">ScanStations</header>  
+                        <ul class="mega-links dropdown-links">
+                            <li><a href="{{ url_for('scanIn') }}"><img src="{{ url_for('static', filename='images/scanIn.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Scan-In Logo">
+                            Scan-In</a></li>
+                            <li><a href="{{ url_for('printStation') }}"><img src="{{ url_for('static', filename='images/printstation.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Print Logo">
+                            PrintStation</a></li>
+                            <li><a href="{{ url_for('scanOut') }}"><img src="{{ url_for('static', filename='images/scanOut.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Scan-out Logo">
+                            Scan-Out</a></li>
+                        </ul>
+                        </div>
+                        <div class="navrow">  
+                        <header class="dropdown-header">ShippingStations</header>  
+                        <ul class="mega-links dropdown-links"> 
+                            <li><a href="{{ url_for('cubbysystem') }}"><img src="{{ url_for('static', filename='images/cubbyhole.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="CubbyHole Logo">
+                            CubbyHole</a></li>
+                            <li><a href="{{ url_for('shipOut') }}"><img src="{{ url_for('static', filename='images/shipping.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Ship-Out Logo">
+                            Ship-Out</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                </ul>
+                <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+            </div>
+        </nav>
+    
+    </header>
+ 
+
+<!-- PASSWORD MODAL -->  
+<div id="passwordModal" class="modal" tabindex="-1" role="dialog">    
+    <div class="modal-dialog" role="document">    
+      <div class="modal-content">                  
+        <div class="passwordBanner"><h4>ENTER PASSWORD</h4></div>     
+        <div class="modal-body">  
+            <h5>Admin is needed to change between stations.</h5>
+          <input type="password" id="passwordInput" class="form-control" placeholder="Password">    
+        </div>    
+        <div class="modal-footer">    
+            <button type="button" class="btn btn-primary submitButton">SUBMIT</button>   
+        </div>    
+      </div>    
+    </div>    
+  </div> 
+
+    <main style="display: none;">
+
+    <!-- BANNER -->
+    <div class="text-center p-4">
+        <h1>Scan-In Station</h1>
+    </div>
+    <div class="banner-container">  
+        <div class="banner">  
+        <!-- scan bar -->  
+            <form onsubmit="event.preventDefault(); displayItemInfo(document.getElementsByName('scanned_number')[0].value);" class="search-bar">  
+                <input type="search" name="scanned_number" pattern=".*\S.*" required>  
+                <button class="search-btn" type="submit">  
+                    <span>SUBMIT</span>  
+                </button>  
+            </form>
+            <div>
+                <select class="txt-files-dropdown" id="txt-files-dropdown"></select>
+            </div>
+        </div>
+        <!-- use indicator -->  
+        <div class="p-4 underline-container">  
+        <h4 id="useIndicator" class="full-width-underline">MAIN</h4>
+    </div>
+    </div>  
+    
+    <div class="content-container">
+        
+<!-- MAIN DISPLAY -->  
+<div class="main-display">  
+    <div class="previewBanner1">  
+        <span class="banner-text" id="banner-text">MAIN DISPLAY</span>  
+    </div>  
+    <div class="img_box">  
+        <div id="item-image"></div> 
+        <input type="hidden" id="blank-image-path" value="{{ blank_image_path }}"> 
+    </div>  
+    <!-- Add arrow elements here -->  
+    <div class="arrow left-arrow" id="left-arrow" onclick="switchImage('previous')">&lt;</div>  
+    <div class="arrow right-arrow" id="right-arrow" onclick="switchImage('next')">&gt;</div>  
+</div>
+
+<!-- ITEM DETAILS -->  
+<div class="item-details">  
+    <div class="previewBanner1">  
+        <span class="banner-text">ITEM DETAILS</span>  
+    </div>  
+    <div id="item-description"></div>  
+</div> 
+
+</main>
+
+<!-- WARNING MODAL -->  
+<div class="modal" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModal-label" aria-hidden="true">  
+    <div class="modal-dialog" role="document">  
+        <div class="modal-content">  
+            <div class="warningBanner">  
+                <h4>WARNING!</h4>  
+            </div>  
+            <div class="modal-header">  
+                <h5 class="modal-title" id="alreadyScannedModalLabel">Mismatch Stage</h5>  
+            </div>  
+            <div class="modal-body">  
+                <p id="modal-text"></p>  
+                <h5>Enter password to proceed:</h5>  
+                <input type="password" id="warningPasswordInput" class="form-control" placeholder="Password">  
+            </div>  
+            <div class="modal-footer">  
+                <button type="button" class="btn btn-primary submitButton" id="warningSubmitButton">SUBMIT</button>
+            </div>  
+        </div>  
+    </div>  
+</div>  
+
+
+
+    
+        <script>const blankImagePath = "{{ blank_image_path }}";</script>
+        <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/scanIn.js') }}"></script> 
+        <script src="{{ url_for('static', filename='js/penguin.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    </body>  
+</html>  
+
+
+
+
+
+
+

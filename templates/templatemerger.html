@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>TemplateMerger</title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel ="shortcut icon" type="x-icon" href="{{ url_for('static', filename='images/Completeful Logo Black.svg') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head> 
+<body>
+
+  <header class="text-center">  
+  
+    <!-- NAV -->  
+    <nav>
+      <div class="wrapper">
+        <div class="cakeLogo">  
+          <a href="#"><img src="{{ url_for('static', filename='images/CakeSiteLogo.svg') }}" alt="Cake Logo"></a>  
+      </div> 
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+          <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('admin') }}">Admin</a></li>
+          <li>
+              <button id="productionBtn" class="desktop-item production-btn">Production</button>   
+              <button id="productionBtnMobile" class="mobile-item production-btn">Production</button>
+              <div class="mega-box">
+              <div class="content">
+                <div class="navrow jimjim">
+                  <img src="{{ url_for('static', filename='images/home/Imwatchingyou_edit.png') }}" class="jimjim" alt="Jimmy is Watching">
+                  </div>
+                  <div class="navrow">
+                  <header class="dropdown-header">PrintLayotLab</header>  
+                  <ul class="mega-links dropdown-links">
+                      <li><a class="m-0" href="{{ url_for('precheck') }}">  
+                      <img src="{{ url_for('static', filename='images/precheck.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Precheck Logo">  
+                  Precheck</a></li>
+                      <li><a class="m-0" href="{{ url_for('designer') }}">
+                      <img src="{{ url_for('static', filename='images/designer.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Template Logo">
+                  Designer</a></li>
+                      <li><a class="m-0" href="{{ url_for('templatemerger') }}">  
+                      <img src="{{ url_for('static', filename='images/template.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Designer Logo">  
+                  TemplateMerger</a></li>
+                  </ul>
+                  </div>
+                  <div class="navrow">  
+                  <header class="dropdown-header">ScanStations</header>  
+                  <ul class="mega-links dropdown-links">
+                      <li><a href="{{ url_for('scanIn') }}"><img src="{{ url_for('static', filename='images/scanIn.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Scan-In Logo">
+                      Scan-In</a></li>
+                      <li><a href="{{ url_for('printStation') }}"><img src="{{ url_for('static', filename='images/printstation.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Print Logo">
+                      PrintStation</a></li>
+                      <li><a href="{{ url_for('scanOut') }}"><img src="{{ url_for('static', filename='images/scanOut.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Scan-out Logo">
+                      Scan-Out</a></li>
+                  </ul>
+                  </div>
+                  <div class="navrow">  
+                  <header class="dropdown-header">ShippingStations</header>  
+                  <ul class="mega-links dropdown-links"> 
+                      <li><a href="{{ url_for('cubbysystem') }}"><img src="{{ url_for('static', filename='images/cubbyhole.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="CubbyHole Logo">
+                      CubbyHole</a></li>
+                      <li><a href="{{ url_for('shipOut') }}"><img src="{{ url_for('static', filename='images/shipping.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Ship-Out Logo">
+                      Ship-Out</a></li>
+                  </ul>
+                  </div>
+              </div>
+              </div>
+          </li>
+          </ul>
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+      </div>
+  </nav>
+
+</header> 
+
+  <!-- CONTENT -->
+
+  <div class="container text-center p-md-5">
+  
+    <div class="bounding_box">
+      <div class="p-4">
+        <h2>TemplateMerger</h2>
+        <p>choose a format and browse the downloaded images to export into the desired template</p>
+      </div>
+    </div>
+    
+  <!-- DROPDOWN  and BROWES KEY-->
+  <div class="dropdown mt-3">
+    <div class="row p-3 align-items-center">
+    <button class="btn btn-secondary dropdown-toggle col" type="button" id="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <h3 id="format-btn">Choose a Format</h3>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <li id="desk-plates"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/deskplates.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add deskplates">
+        Desk Plates</a></li>
+      <li id="flutes"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/flute.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add flutes">
+        Flutes</a></li>
+      <li id="stanly-tags"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/tags.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add stanly tags">
+        Stanly Tags</a></li>
+      <li id="golfballs"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/golfball.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add golfballs">
+        GolfBalls</a></li>
+      <li id="bookmarks"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/bookmark.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add bookmarks">
+        Bookmarks</a></li>
+      <li id="mugs"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/mug.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add mugs">
+        Mugs</a></li>
+      <li id="q2"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/mug.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add mugs">
+        Q2 Mugs</a></li>
+      <li id="planks-66"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/6X6.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add planks 6X6">
+        Planks 6X6</a></li>
+      <li id="planks-88"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/8X8.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add planks 8X8">
+        Planks 8X8</a></li>
+      <li id="planks-1010"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/10X10.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add planks 10X10">
+        Planks 10X10</a></li>
+      <li id="planks-1212"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/12X12.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add planks 12X12">
+        Planks 12X12</a></li>
+      <li id="planks-186"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/18X6.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add planks 18X6">
+        Planks 18X6</a></li>
+      <li id="planks-2412"><a href="#" class="dropdown-item"><img src="{{ url_for('static', filename='images/24X12.svg') }}" width="18" height="18" class="d-inline-block align-center" alt="Click to add planks 24X12">
+        Planks 24X12</a></li>
+    </ul>
+    <div class="col">
+    <input type="file" id="file-input" accept=".png" multiple>
+    </div>
+  </div>
+  </div>
+
+  <!-- EXPORT BUTTON-->
+    <div class="container p-sm-2">
+      <button class="button" type="button" id="export-button">Export PNG</button>
+    </div>
+    <div id="preview-area"></div>
+    </div>
+
+  <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/templatemerger.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script> 
+
+</body>
+</html>
+

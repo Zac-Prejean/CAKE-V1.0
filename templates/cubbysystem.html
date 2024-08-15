@@ -1,0 +1,280 @@
+<!DOCTYPE html>  
+<html lang="en">  
+  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>CubbyHole</title>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+    <link rel="shortcut icon" type="x-icon" href="{{ url_for('static', filename='images/Completeful Logo Black.svg') }}">  
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">   
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">   
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/cubbysystem_styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>     
+</head>
+  
+<body>  
+  
+<header class="text-center">  
+  
+    <!-- NAV -->  
+    <nav>
+        <div class="wrapper">
+            <div class="cakeLogo">  
+                <a href="#"><img src="{{ url_for('static', filename='images/CakeSiteLogo.svg') }}" alt="Cake Logo"></a>  
+            </div> 
+            <input type="radio" name="slider" id="menu-btn">
+            <input type="radio" name="slider" id="close-btn">
+            <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('admin') }}">Admin</a></li>
+            <li>
+                <button id="productionBtn" class="desktop-item production-btn">Production</button>   
+                <button id="productionBtnMobile" class="mobile-item production-btn">Production</button>
+                <div class="mega-box">
+                <div class="content">
+                    <div class="navrow jimjim">
+                    <img src="{{ url_for('static', filename='images/home/Imwatchingyou_edit.png') }}" class="jimjim" alt="Jimmy is Watching">
+                    </div>
+                    <div class="navrow">
+                    <header class="dropdown-header">PrintLayotLab</header>  
+                    <ul class="mega-links dropdown-links">
+                        <li><a class="m-0" href="{{ url_for('precheck') }}">  
+                        <img src="{{ url_for('static', filename='images/precheck.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Precheck Logo">  
+                    Precheck</a></li>
+                        <li><a class="m-0" href="{{ url_for('designer') }}">
+                        <img src="{{ url_for('static', filename='images/designer.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Template Logo">
+                    Designer</a></li>
+                        <li><a class="m-0" href="{{ url_for('templatemerger') }}">  
+                        <img src="{{ url_for('static', filename='images/template.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Designer Logo">  
+                    TemplateMerger</a></li>
+                    </ul>
+                    </div>
+                    <div class="navrow">  
+                    <header class="dropdown-header">ScanStations</header>  
+                    <ul class="mega-links dropdown-links">
+                        <li><a href="{{ url_for('scanIn') }}"><img src="{{ url_for('static', filename='images/scanIn.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Scan-In Logo">
+                        Scan-In</a></li>
+                        <li><a href="{{ url_for('printStation') }}"><img src="{{ url_for('static', filename='images/printstation.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Print Logo">
+                        PrintStation</a></li>
+                        <li><a href="{{ url_for('scanOut') }}"><img src="{{ url_for('static', filename='images/scanOut.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Scan-out Logo">
+                        Scan-Out</a></li>
+                    </ul>
+                    </div>
+                    <div class="navrow">  
+                    <header class="dropdown-header">ShippingStations</header>  
+                    <ul class="mega-links dropdown-links"> 
+                        <li><a href="{{ url_for('cubbysystem') }}"><img src="{{ url_for('static', filename='images/cubbyhole.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="CubbyHole Logo">
+                        CubbyHole</a></li>
+                        <li><a href="{{ url_for('shipOut') }}"><img src="{{ url_for('static', filename='images/shipping.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Ship-Out Logo">
+                        Ship-Out</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </li>
+            </ul>
+            <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+    </nav>
+
+</header>  
+
+<!-- BANNER --> 
+
+<div class="banner-container">  
+    <div class="banner">  
+    <!-- scan bar -->  
+        <form action="{{ url_for('add_box') }}" method="POST" class="search-bar" data-add-box-url="{{ url_for('add_box') }}">  
+            <input type="search" name="scanned_number" pattern=".*\S.*" required>  
+            <button class="search-btn" type="submit">  
+                <span>SUBMIT</span>  
+            </button>   
+        </form> 
+        <div>
+            <select class="txt-files-dropdown" id="txt-files-dropdown"></select>
+        </div>
+    </div>  
+    <!-- boxes in use -->  
+    <div class="p-4 underline-container">  
+        <h4 id="boxesInUse" class="full-width-underline">BOXES</h4>
+    </div>
+</div>  
+
+  
+  
+    <!-- CONTENT -->  
+    <div id="cubbies" class="box-container">  
+        <div id="boxContainer"></div>     
+    </div> 
+
+<!-- SCANNED MODEL -->  
+<div class="modal fade" id="boxNumberModal" tabindex="-1" role="dialog" aria-labelledby="boxNumberModalLabel" aria-hidden="true">  
+    <div class="modal-dialog" role="document">  
+        <div class="boxModal-content"> 
+            <div class="scanBanner">BOX ADDED</div> 
+            <div class="modal-header">  
+            <h5 class="modal-title " id="boxNumberModalLabel">Order Added to Box</h5>
+            </div>  
+            <div class="modal-body">  
+            <p class="box-number-modal-text"><strong>Box <span id="boxNumber"></span></strong></p>  
+            </div>  
+            <div class="modal-footer">  
+                <button type="button" class="closeModalBtn cancelButton">Close</button>
+            </div>  
+        </div>  
+        </div>  
+    </div> 
+<!-- Warning Modal for Invalid Number Format -->  
+<div class="modal fade" id="invalidNumberModal" tabindex="-1" role="dialog" aria-labelledby="invalidNumberModalLabel" aria-hidden="true">  
+    <div class="modal-dialog" role="document">  
+      <div class="modal-content"> 
+        <div class="notScannedBanner">WARNING!</div>   
+        <div class="modal-header">  
+          <h5 class="modal-title text-center" id="invalidNumberModalLabel">Invalid Number Format</h5>
+        </div>  
+        <div class="modal-body text-center">  
+          Please enter a valid BIN-ID.  
+        </div>  
+        <div class="modal-footer">  
+        <button type="button" class="btn btn-secondary closeModalBtn">Close</button>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+
+<!-- ALREADY SCANNED MODEL -->    
+<div class="modal fade" id="alreadyScannedModal" tabindex="-1" role="dialog" aria-labelledby="alreadyScannedModalLabel" aria-hidden="true">    
+    <div class="modal-dialog" role="document">    
+    <div class="modal-content">   
+        <div class="alreadyScannedBanner">BOX NUMBER</div>   
+        <div class="modal-header">    
+        <h5 class="modal-title text-center" id="alreadyScannedModalLabel">Already Scanned</h5>    
+        </div>  
+        <div class="modal-body text-center">    
+            <p id="alreadyScannedText">This number has already been scanned and is in <strong class="red-text">Box <span id="scannedBoxNumber"></span></strong></p>    
+        </div>    
+        <div class="modal-footer">    
+        <button type="button" class="btn btn-secondary closeModalBtn">Close</button>    
+        </div>    
+    </div>    
+    </div>    
+</div>   
+
+<!-- UNSCANNED MODEL -->    
+<div class="modal fade" id="notScannedModal" tabindex="-1" role="dialog" aria-labelledby="notScannedModalLabel" aria-hidden="true">    
+    <div class="modal-dialog" role="document">    
+    <div class="modal-content">   
+        <div class="notScannedBanner">OOPS!</div>   
+        <div class="modal-header">    
+        <h5 class="modal-title text-center" id="notScannedModalLabel">Not Scanned</h5>    
+        </div>  
+        <div class="modal-body text-center">    
+            <p id="alreadyScannedText">This number has not been scanned yet or the item is in another batch.</span></strong></p>    
+        </div>    
+        <div class="modal-footer">    
+        <button type="button" class="btn btn-secondary closeModalBtn">Close</button>    
+        </div>    
+    </div>    
+    </div>    
+</div>  
+
+<!-- Box Modal -->  
+<div class="modal fade" id="boxInfoModal" tabindex="-1" role="dialog" aria-labelledby="boxInfoModalLabel" aria-hidden="true">  
+    <div class="modal-dialog" role="document">  
+        <div class="modal-content">
+            <div class="scannedBanner"><h2><strong>Box <span id="boxInfoNumber"></span></strong></h2></div>   
+            <div class="modal-body">  
+                <p class="box-info-modal-text"><strong>Order Number: <span id="boxInfoOrderNumber"></span></strong></p>  
+                <p class="box-info-modal-text"><strong>First Scanned Time: <span id="boxInfoFirstScannedTime"></span></strong></p>  
+                <div id="scannedItems"></div>
+            </div>  
+            <div class="modal-footer">  
+                <button type="button" class="btn btn-success" id="completeBoxBtn" style="display:none;">Complete</button>  
+                <button type="button" class="btn btn-danger" id="deleteBoxBtn">Delete</button>  
+                <button type="button" class="btn btn-secondary closeModalBtn">Close</button>  
+            </div>  
+        </div>  
+    </div>  
+</div> 
+
+<!-- Preview Modal -->  
+<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-hidden="true">  
+    <div class="modal-dialog" role="document">  
+      <div class="modal-content">  
+        <div class="modal-header">  
+          <h5 class="modal-title" id="previewModalLabel">Item Preview</h5>  
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
+            <span aria-hidden="true">&times;</span>  
+          </button>  
+        </div>  
+        <div class="modal-body">  
+          <img id="previewImage" src="" alt="Item preview" style="max-width: 100%;">  
+        </div>  
+        <div class="modal-footer">  
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
+        </div>  
+      </div>  
+    </div>  
+  </div> 
+
+    <!-- Delete Warning Modal -->  
+    <div class="modal fade" id="deleteWarningModal" tabindex="-1" role="dialog" aria-labelledby="deleteWarningModalLabel" aria-hidden="true">  
+        <div class="modal-dialog" role="document">  
+            <div class="modal-content">
+                <div class="warningBanner">WARNING!</div>  
+                <div class="modal-header">  
+                    <h5 class="modal-title" id="deleteWarningModalLabel">Delete Box</h5>  
+                </div> 
+                <div class="form-group">  
+                    <label for="deletePasswordInput">Enter password:</label>  
+                    <input type="password" class="form-control" id="deletePasswordInput">  
+                </div> 
+                <div class="modal-body">  
+                    <p>Are you sure you want to delete <strong>Box <span id="deleteBoxNumber"></span></strong>?</p>  
+                </div>  
+                <div class="modal-footer">  
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Yes, delete</button>  
+                    <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button>  
+                </div>  
+            </div>  
+        </div>  
+    </div>
+
+    <!-- Complete Warning Modal -->  
+    <div class="modal fade" id="completeWarningModal" tabindex="-1" role="dialog" aria-labelledby="completeWarningModalLabel" aria-hidden="true">  
+        <div class="modal-dialog" role="document">  
+            <div class="modal-content"> 
+                <div class="confirmBanner">CONFIRM</div> 
+                <div class="modal-header">  
+                    <h5 class="modal-title" id="completeWarningModalLabel">Complete Box</h5>  
+                </div>  
+                <div class="modal-body">  
+                    <p>Are you sure you want to complete <strong>Box <span id="completeBoxNumber"></span></strong>?</p>  
+                </div>  
+                <div class="modal-footer">  
+                    <button type="button" class="btn btn-success" id="confirmCompleteBtn">Yes, complete</button>  
+                    <button type="button" class="btn btn-secondary" id="cancelCompleteBtn">Cancel</button>  
+                </div>  
+            </div>  
+        </div>  
+    </div>
+
+  
+    <!-- TERMINAL OUTPUT -->   
+    <div id="result"></div>  
+  
+    <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cubbysystem.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/penguin.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>  
+</body>  
+  
+</html>    
+

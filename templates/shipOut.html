@@ -1,0 +1,143 @@
+<!DOCTYPE html>  
+<html lang="en">  
+  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>ShipOut</title>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+    <link rel="shortcut icon" type="x-icon" href="{{ url_for('static', filename='images/Completeful Logo Black.svg') }}">  
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">   
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shipOut_styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>     
+</head>
+  
+<body>  
+  
+    <header class="text-center">  
+      
+        <!-- NAV -->  
+        <nav>
+            <div class="wrapper">
+                <div class="cakeLogo">  
+                    <a href="#"><img src="{{ url_for('static', filename='images/CakeSiteLogo.svg') }}" alt="Cake Logo"></a>  
+                </div> 
+                <input type="radio" name="slider" id="menu-btn">
+                <input type="radio" name="slider" id="close-btn">
+                <ul class="nav-links">
+                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                <li>
+                    <button id="productionBtn" class="desktop-item production-btn">Production</button>   
+                    <button id="productionBtnMobile" class="mobile-item production-btn">Production</button>
+                    <div class="mega-box">
+                    <div class="content">
+                        <div class="navrow jimjim">
+                        <img src="{{ url_for('static', filename='images/home/Imwatchingyou_edit.png') }}" class="jimjim" alt="Jimmy is Watching">
+                        </div>
+                        <div class="navrow">
+                        <header class="dropdown-header">PrintLayotLab</header>  
+                        <ul class="mega-links dropdown-links">
+                            <li><a class="m-0" href="{{ url_for('precheck') }}">  
+                            <img src="{{ url_for('static', filename='images/precheck.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Precheck Logo">  
+                        Precheck</a></li>
+                            <li><a class="m-0" href="{{ url_for('designer') }}">
+                            <img src="{{ url_for('static', filename='images/designer.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Template Logo">
+                        Designer</a></li>
+                            <li><a class="m-0" href="{{ url_for('templatemerger') }}">  
+                            <img src="{{ url_for('static', filename='images/template.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Designer Logo">  
+                        TemplateMerger</a></li>
+                        </ul>
+                        </div>
+                        <div class="navrow">  
+                        <header class="dropdown-header">ScanStations</header>  
+                        <ul class="mega-links dropdown-links">
+                            <li><a href="{{ url_for('scanIn') }}"><img src="{{ url_for('static', filename='images/scanIn.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Scan-In Logo">
+                            Scan-In</a></li>
+                            <li><a href="{{ url_for('printStation') }}"><img src="{{ url_for('static', filename='images/printstation.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Print Logo">
+                            PrintStation</a></li>
+                            <li><a href="{{ url_for('scanOut') }}"><img src="{{ url_for('static', filename='images/scanOut.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Scan-out Logo">
+                            Scan-Out</a></li>
+                        </ul>
+                        </div>
+                        <div class="navrow">  
+                        <header class="dropdown-header">ShippingStations</header>  
+                        <ul class="mega-links dropdown-links"> 
+                            <li><a href="{{ url_for('cubbysystem') }}"><img src="{{ url_for('static', filename='images/cubbyhole.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="CubbyHole Logo">
+                            CubbyHole</a></li>
+                            <li><a href="{{ url_for('shipOut') }}"><img src="{{ url_for('static', filename='images/shipping.svg') }}" width="30" height="30" class="icon d-inline-block align-center" alt="Ship-Out Logo">
+                            Ship-Out</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                </ul>
+                <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+            </div>
+        </nav>
+    
+    </header>
+
+        <!-- BANNER -->
+        <div class="main-container">  
+            <div class="main">
+                <div class="text-center p-4">
+                    <h1>Ship-Out Station</h1>
+                </div>
+            <!-- scan bar -->  
+                <form onsubmit="event.preventDefault(); changestatus(document.getElementsByName('scanned_number')[0].value);" class="search-bar">  
+                    <input type="search" name="scanned_number" pattern=".*\S.*" required>  
+                    <button class="search-btn" type="submit">  
+                        <span>SUBMIT</span>  
+                    </button>  
+                </form>
+                <div>
+                    <select class="txt-files-dropdown" id="txt-files-dropdown"></select>
+                </div>
+            </div>
+        </div>
+        <!-- STATUS MODAL -->  
+        <div id="myModal" class="modal">  
+     
+            <div class="modal-content">     
+              <div class="modal-banner">WARNING!</div>
+              <div class="modal-header">  
+                <h5 class="modal-title" id="alreadyScannedModalLabel">Mismatch Stage</h5>  
+              </div>
+              <div class="modal-body">
+              <p id="modal-text"></p>  
+              </div> 
+              <div class="modal-footer">  
+              <span class="close">&times;</span> 
+              </div>
+            </div>  
+          </div>
+
+        <!-- Quantity Modal -->  
+        <div id="quantityModal" class="modal"> 
+
+            <div class="modal-content"> 
+                <div class="confirm-banner">CONFIRM</div>
+                <div class="modal-header">
+                <h5 class="modal-title" id="modal-message"></h5>
+                </div>
+                <div class="modal-footer">
+                <button id="confirmButton" class="confirmButton"></button>  
+                <button id="cancelButton" class="cancelButton"></button> 
+                </div>
+            </div>
+        </div> 
+
+    <script src="{{ url_for('static', filename='js/config.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/shipOut.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>  
+</html> 
