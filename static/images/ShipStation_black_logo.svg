@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 400 400.00001"
+   version="1.1"
+   sodipodi:docname="ShipStation_black_logo.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   width="400"
+   height="400"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs75" />
+  <sodipodi:namedview
+     id="namedview73"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="1.403902"
+     inkscape:cx="308.06993"
+     inkscape:cy="236.48374"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" />
+  <path
+     id="Gear"
+     d="m 227.70029,381.8173 h -55.36326 l -7.32292,-48.32657 c -12.16023,-3.2029 -23.82329,-8.05974 -34.66266,-14.43455 L 91.014077,348.08692 51.85075,308.96069 80.881339,269.59822 C 74.518342,258.75301 69.685928,247.07984 66.521455,234.91051 l -48.338733,-7.27322 v -55.28897 l 48.326299,-7.31052 c 3.183005,-12.1572 8.018867,-23.82024 14.372318,-34.66286 L 51.85075,91.000048 91.014077,51.848943 130.35145,80.879693 c 10.83897,-6.360694 22.50296,-11.197006 34.66266,-14.372398 l 7.32292,-48.326563 h 55.36326 l 7.27319,48.326563 c 12.16889,3.171429 23.84162,8.007898 34.68751,14.372398 l 39.32495,-29.03075 39.17577,39.151105 -29.03059,39.337592 c 6.35223,10.84175 11.18407,22.50518 14.35988,34.66285 l 48.3263,7.34783 v 55.37599 l -48.3263,7.27322 c -3.17128,12.16312 -8.00335,23.83127 -14.35988,34.67528 l 29.03059,39.35004 -39.16333,39.16353 -39.33739,-29.03074 c -10.85075,6.35473 -22.52209,11.19063 -34.68751,14.3724 z M 200.00001,139.20229 c -24.59208,-0.005 -46.76541,14.80586 -56.17818,37.52473 -9.41276,22.71884 -4.21077,48.87035 13.17838,66.2596 17.38916,17.38925 43.54053,22.59126 66.25923,13.17845 22.71876,-9.41282 37.52956,-31.58627 37.52453,-56.17849 -0.0343,-33.55603 -27.22811,-60.75002 -60.78396,-60.78429 z"
+     style="fill:none;stroke:#000000;stroke-width:36.3654;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;stroke-linejoin:round"
+     sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccssscc" />
+</svg>
